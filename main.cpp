@@ -1,7 +1,28 @@
 #include <iostream>
 
 #include "src/hello.hpp"
-
+using namespace std;
 int main() {
-  std::cout << hello() << std::endl;
+  TodoList list;
+
+  list.add("Buy milk");
+  list.add("Buy eggs");
+  list.add("Prepare a lesson for CSC 122");
+  list.add("Sow beet seeds");
+
+  list.complete("Buy eggs");
+
+   list.all();
+
+
+  list.complete();
+
+  list.incomplete();
+
+
+  list.clear();
+
+
+  list.all();
 }
+

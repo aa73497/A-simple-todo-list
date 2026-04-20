@@ -5,6 +5,27 @@
 
 #include "../src/hello.hpp"
 
-TEST_CASE( "it returns Hello World" ) {
-    REQUIRE( hello() == "Hello World!" );
+TEST_CASE("Add task") {
+    TodoList list;
+    REQUIRE(list.add("Sow beet seeds") == true);
 }
+
+TEST_CASE("Complete a task in the list") {
+    TodoList list;
+    list.add("Sow beet seeds");
+    REQUIRE(list.complete("Sow beet seeds") == true);
+}
+TEST_CASE("Complete a non existent task") {
+    TodoList list;
+    REQUIRE(list.complete("Sow beet seeds") == false);
+}
+TEST_CASE("Clears all tasks") {
+    TodoList list;
+    list.add("Sow beet seeds");
+    list.add("Buy eggs");
+    list.clear();
+    REQUIRE(list.complete("Sow beet seeds") == false);
+    REQUIRE(list.complete("Buy eggs") == false);
+}
+
+
